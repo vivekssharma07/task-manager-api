@@ -15,11 +15,8 @@ router.post('/register', async (req, res) => {
 
     try {
         await user.save()
-        console.log("111111111111111",user);
         const token = await user.generateAuthToken()
-        console.log("222222222222222",token);
         sendWelcomeEmail(user.email,user.name)
-        console.log("333333333333333333");
         res.status(201).send({ user, token })
     } catch (e) {
         res.status(400).send(e)
