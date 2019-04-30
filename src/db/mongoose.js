@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGO_URI,{useNewUrlParser:true,useCreateIndex:true,useFindAndModify: false},() => {
+mongoose.connect('mongodb+srv://root:Vivek07$@cluster0-wemqu.mongodb.net/task-manager?retryWrites=true',{useNewUrlParser:true,useCreateIndex:true,useFindAndModify: false},() => {
     console.log('Connected to database successfully!');
 });
