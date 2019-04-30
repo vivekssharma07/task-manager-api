@@ -4,7 +4,7 @@ const middleware = require('../middleware/auth')
 const router = new express.Router();
 
 
-router.post('/tasks', async (req, res) => {
+router.post('/tasks', middleware,async (req, res) => {
 
     const task = new Task(    {
         ...req.body,
