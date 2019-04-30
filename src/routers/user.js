@@ -6,13 +6,17 @@ const { sendWelcomeEmail,sendCancellationMail } = require('../emails/accounts')
 const router = new express.Router();
 
 
+router.get('/test',(req,res) => {
+    res.status(200).send('Working Successfully!')
+})
+
 router.post('/register', async (req, res) => {
     const user = new User(req.body)
 
     try {
         await user.save()
         const token = await user.generateAuthToken()
-       // sendWelcomeEmail(user.email,user.name)
+        sendWelcomeEmail(user.email,user.name)
         res.status(201).send({ user, token })
     } catch (e) {
         res.status(400).send(e)
